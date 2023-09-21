@@ -1,0 +1,24 @@
+# use merge function
+x = [1,2,3,4,5]
+y = [6,7,8]
+i, j = 0, 0
+z = []
+def merge(x: list[int], y: list[int]) -> list[int]:
+    while i < len (x) and j < len(y):
+        if x[i] < y[j]:
+            z.append (x[i])
+            i += 1
+        else:
+            z.append (y[j])
+            j += 1
+z.extend(x[i::])
+z.extend(y[j::])
+print(z)
+
+## Sieve of Eratosthenes 
+## Exercise: Prove that the invariants are true with the initial lists defined as above.
+
+def sieve(n: int) -> list[int]:
+    sieve(15)
+
+
