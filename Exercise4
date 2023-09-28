@@ -1,0 +1,75 @@
+## Strategy 1: Incremental Guessing (Starting from 1)
+def incremental_guessing():
+    target_number = int(input("Player 1, enter the target number (between 1 and 20): "))
+    guess = 1
+    
+    while guess != target_number:
+        guess += 1
+    
+    print(f"Player 2 guessed the correct number {guess}!")
+
+incremental_guessing()
+
+## Strategy 2: Decremental Guessing (Starting from 20)
+
+def decremental_guessing():
+    target_number = int(input("Player 1, enter the target number (between 1 and 20): "))
+    guess = 20
+    
+    while guess != target_number:
+        guess -= 1
+    
+    print(f"Player 2 guessed the correct number {guess}!")
+
+decremental_guessing()
+
+## Strategy 3: Binary Search-like Strategy (Starting from 10)
+
+def binary_search_guessing():
+    target_number = int(input("Player 1, enter the target number (between 1 and 20): "))
+    low = 1
+    high = 20
+    guess = 10
+    
+    while guess != target_number:
+        if guess < target_number:
+            low = guess + 1
+        else:
+            high = guess - 1
+        guess = (low + high) // 2
+    
+    print(f"Player 2 guessed the correct number {guess}!")
+
+binary_search_guessing()
+
+
+
+
+## sieve_of_eratosthenes
+def sieve_of_eratosthenes(n):
+    # Create a boolean list "is_prime" of size (n+1) and initialize all entries as True.
+    is_prime = [True] * (n + 1)
+    is_prime[0] = is_prime[1] = False  # 0 and 1 are not prime numbers.
+
+    # Start with the first prime number, 2.
+    p = 2
+
+    while p * p <= n:
+        # If is_prime[p] is not changed, then it is a prime.
+        if is_prime[p]:
+            # Mark all multiples of p as non-prime.
+            for i in range(p * p, n + 1, p):
+                is_prime[i] = False
+        p += 1
+
+    # Collect and return the prime numbers.
+    primes = [i for i in range(2, n + 1) if is_prime[i]]
+    return primes
+
+# Example usage:
+n = 30  # Change this value to find primes up to a different limit.
+prime_numbers = sieve_of_eratosthenes(n)
+print("Prime numbers up to", n, "are:", prime_numbers)
+
+
+
